@@ -1,0 +1,22 @@
+# Images : cache long, elles changent rarement et sont nommées de façon stable
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Favicons : cache long
+/favicon.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+# Manifest : cache modéré (peut être mis à jour ponctuellement)
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+# Documents PDF : cache modéré, ils sont mis à jour chaque année scolaire
+/documents/*
+  Cache-Control: public, max-age=604800
+
+# Toutes les pages : en-têtes de sécurité de base
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
