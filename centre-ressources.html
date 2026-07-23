@@ -597,5 +597,262 @@
 <a href="https://wa.me/22670189027" target="_blank" rel="noopener" class="wa-float" aria-label="Contacter sur WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.15-1.35a9.85 9.85 0 0 0 4.89 1.28h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.02c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.37-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.33.02.53-.1.2-.15.32-.29.49-.14.17-.3.38-.43.51-.14.14-.29.29-.12.58.16.29.75 1.24 1.61 2.01 1.11.99 2.04 1.3 2.34 1.44.3.14.47.12.65-.07.18-.19.75-.87.96-1.17.2-.3.4-.24.66-.14.27.09 1.7.8 1.99.95.29.14.48.22.55.34.07.13.07.72-.17 1.4Z"/></svg>
 </a>
+<!-- Assistant ARC : bulle de chat flottante. Bloc à coller juste avant </body> sur chaque page. -->
+<style>
+  #arc-chat-launcher{
+    position:fixed;
+    bottom:22px;
+    right:22px;
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    background:linear-gradient(135deg, #152a63, #5b9bd5);
+    border:2px solid #e8ab2e;
+    box-shadow:0 8px 24px rgba(18,35,63,0.35);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9998;
+    padding:8px;
+  }
+  #arc-chat-launcher img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  #arc-chat-launcher .arc-chat-close-icon{
+    display:none;
+    color:#fff;
+    font-family:Arial, sans-serif;
+    font-size:26px;
+    line-height:1;
+  }
+  #arc-chat-launcher.arc-chat-open .arc-chat-badge-icon{display:none;}
+  #arc-chat-launcher.arc-chat-open .arc-chat-close-icon{display:block;}
+  #arc-chat-widget{
+    position:fixed;
+    bottom:96px;
+    right:22px;
+    width:370px;
+    max-width:calc(100vw - 32px);
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 12px 40px rgba(18,35,63,0.28);
+    overflow:hidden;
+    display:none;
+    flex-direction:column;
+    height:560px;
+    max-height:calc(100vh - 140px);
+    z-index:9999;
+  }
+  #arc-chat-widget.arc-chat-open{display:flex;}
+  #arc-chat-widget .arc-chat-header{
+    background:linear-gradient(120deg, #152a63, #1e3a7a 60%, #5b9bd5);
+    color:#fff;
+    padding:18px 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-bottom:3px solid #e8ab2e;
+    margin:0;
+  }
+  #arc-chat-widget .arc-chat-badge{
+    width:42px;height:42px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  #arc-chat-widget .arc-chat-badge img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  #arc-chat-widget .arc-chat-titles{font-family:Arial, sans-serif;}
+  #arc-chat-widget .arc-chat-name{font-weight:600;font-size:15px;color:#fff;}
+  #arc-chat-widget .arc-chat-sub{font-size:12px;color:#c9d3e0;margin-top:2px;}
+  #arc-chat-widget .arc-chat-messages{
+    flex:1;
+    padding:18px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    background:#eef4fb;
+    margin:0;
+  }
+  #arc-chat-widget .arc-chat-msg{
+    max-width:82%;
+    padding:11px 14px;
+    border-radius:12px;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    line-height:1.5;
+    margin:0;
+  }
+  #arc-chat-widget .arc-chat-msg.arc-chat-bot{
+    background:#fff;
+    color:#1f2430;
+    align-self:flex-start;
+    border:1px solid #e6e1d6;
+    border-bottom-left-radius:3px;
+  }
+  #arc-chat-widget .arc-chat-msg.arc-chat-user{
+    background:#152a63;
+    color:#fff;
+    align-self:flex-end;
+    border-bottom-right-radius:3px;
+  }
+  #arc-chat-widget .arc-chat-msg.arc-chat-typing{
+    color:#6b7280;
+    font-style:italic;
+  }
+  #arc-chat-widget .arc-chat-quick{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:0 18px 12px;
+    background:#eef4fb;
+    margin:0;
+  }
+  #arc-chat-widget .arc-chat-quick button{
+    font-family:Arial, sans-serif;
+    font-size:12.5px;
+    border:1px solid #e8ab2e;
+    color:#152a63;
+    background:#fff;
+    padding:7px 12px;
+    border-radius:20px;
+    cursor:pointer;
+  }
+  #arc-chat-widget .arc-chat-quick button:hover{background:#fbf3e3;}
+  #arc-chat-widget .arc-chat-inputbar{
+    display:flex;
+    gap:8px;
+    padding:14px;
+    border-top:1px solid #e6e1d6;
+    background:#fff;
+    margin:0;
+  }
+  #arc-chat-widget .arc-chat-inputbar input{
+    flex:1;
+    border:1px solid #d7d2c4;
+    border-radius:20px;
+    padding:10px 16px;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    outline:none;
+  }
+  #arc-chat-widget .arc-chat-inputbar input:focus{border-color:#e8ab2e;}
+  #arc-chat-widget .arc-chat-inputbar button{
+    background:#152a63;
+    color:#fff;
+    border:none;
+    border-radius:20px;
+    padding:0 18px;
+    font-family:Arial, sans-serif;
+    font-weight:600;
+    font-size:14px;
+    cursor:pointer;
+  }
+  #arc-chat-widget .arc-chat-inputbar button:disabled{opacity:0.5;cursor:default;}
+  @media (max-width:480px){
+    #arc-chat-widget{ right:16px; bottom:88px; }
+    #arc-chat-launcher{ right:16px; bottom:16px; }
+  }
+</style>
+
+<div id="arc-chat-launcher">
+  <img class="arc-chat-badge-icon" src="/images/logo-arc-transparent.png" alt="Ouvrir l'assistant ARC" />
+  <span class="arc-chat-close-icon">&times;</span>
+</div>
+
+<div id="arc-chat-widget">
+  <div class="arc-chat-header">
+    <div class="arc-chat-badge"><img src="/images/logo-arc-transparent.png" alt="Logo ARC" /></div>
+    <div class="arc-chat-titles">
+      <div class="arc-chat-name">Assistant Apidon Royal College</div>
+      <div class="arc-chat-sub">Répond aux questions sur l'école</div>
+    </div>
+  </div>
+  <div class="arc-chat-messages" id="arc-chat-messages">
+    <div class="arc-chat-msg arc-chat-bot">Bonjour. Je peux répondre à vos questions sur Apidon Royal College : admissions, pédagogie, campus, contacts. Que souhaitez-vous savoir ?</div>
+  </div>
+  <div class="arc-chat-quick" id="arc-chat-quick">
+    <button data-q="Quelles sont les conditions d'admission ?">Admissions</button>
+    <button data-q="Qu'est ce que le statut PrytARC ?">Statut PrytARC</button>
+    <button data-q="Comment vous contacter ?">Contact</button>
+  </div>
+  <div class="arc-chat-inputbar">
+    <input id="arc-chat-input" type="text" placeholder="Écrivez votre question..." />
+    <button id="arc-chat-send">Envoyer</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var messagesEl = document.getElementById('arc-chat-messages');
+  var inputEl = document.getElementById('arc-chat-input');
+  var sendBtn = document.getElementById('arc-chat-send');
+  var quickEl = document.getElementById('arc-chat-quick');
+  var launcher = document.getElementById('arc-chat-launcher');
+  var widgetEl = document.getElementById('arc-chat-widget');
+  var history = [];
+
+  function addMessage(text, sender){
+    var div = document.createElement('div');
+    div.className = 'arc-chat-msg ' + sender;
+    div.textContent = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  function sendMessage(text){
+    if(!text.trim()) return;
+    addMessage(text, 'arc-chat-user');
+    history.push({role:'user', content: text});
+    inputEl.value = '';
+    sendBtn.disabled = true;
+    quickEl.style.display = 'none';
+
+    var typingDiv = addMessage("L'assistant écrit...", 'arc-chat-bot arc-chat-typing');
+
+    fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: history })
+    })
+    .then(function(response){ return response.json(); })
+    .then(function(data){
+      var reply = data.reply || "Désolé, je n'ai pas pu générer de réponse. Merci de réessayer.";
+      typingDiv.remove();
+      addMessage(reply, 'arc-chat-bot');
+      history.push({role:'assistant', content: reply});
+    })
+    .catch(function(){
+      typingDiv.remove();
+      addMessage("Une erreur est survenue. Merci de réessayer dans un instant.", 'arc-chat-bot');
+    })
+    .finally(function(){
+      sendBtn.disabled = false;
+    });
+  }
+
+  sendBtn.addEventListener('click', function(){ sendMessage(inputEl.value); });
+  inputEl.addEventListener('keydown', function(e){ if(e.key === 'Enter') sendMessage(inputEl.value); });
+  quickEl.addEventListener('click', function(e){
+    if(e.target.tagName === 'BUTTON'){
+      sendMessage(e.target.getAttribute('data-q'));
+    }
+  });
+  launcher.addEventListener('click', function(){
+    var isOpen = widgetEl.classList.toggle('arc-chat-open');
+    launcher.classList.toggle('arc-chat-open', isOpen);
+    if(isOpen) inputEl.focus();
+  });
+})();
+</script>
+<!-- Fin bloc Assistant ARC -->
+
 </body>
 </html>
