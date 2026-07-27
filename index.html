@@ -170,8 +170,9 @@
   .ps-cta::after{content:none;}
   @media (max-width:900px){.ps-big{grid-column:span 2; height:220px;}}
 
+  :root{--banner-h:0px;}
   .marquee-top{
-    position:fixed; top:0; left:0; right:0; z-index:110;
+    position:fixed; top:var(--banner-h); left:0; right:0; z-index:110;
     border:none; margin:0; padding:11px 0;
     background:linear-gradient(90deg, var(--sky-deep) 0%, var(--sky) 45%, var(--red) 72%, #c9860f 100%);
   }
@@ -179,7 +180,7 @@
   .marquee-top .marquee-track .dot{background:#fff; opacity:.8;}
 
   header{
-    position:fixed; top:40px; left:0; right:0; z-index:100;
+    position:fixed; top:calc(40px + var(--banner-h)); left:0; right:0; z-index:100;
     background:rgba(255,255,255,0.7);
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
@@ -224,7 +225,7 @@
     position:relative;
     min-height:100vh;
     display:flex; align-items:center;
-    padding-top:160px; padding-bottom:80px;
+    padding-top:calc(160px + var(--banner-h)); padding-bottom:80px;
     overflow:hidden;
   }
   .hero-bg{position:absolute; inset:0; z-index:0; overflow:hidden;}
@@ -312,6 +313,14 @@
     .hero-float-card{position:relative; right:auto; bottom:auto; width:100%; max-width:340px; height:320px; margin:32px auto 0;}
   }
   .hero-float-card .slideshow{border-radius:7px;}
+  @media (max-width:860px){
+    .hero{flex-direction:column; align-items:stretch;}
+  }
+  @media (max-width:600px){
+    .hero{padding-top:calc(112px + var(--banner-h)); padding-bottom:48px;}
+    .hero h1{font-size:30px; margin-left:-4px;}
+    .container.hero-grid-full{padding-left:16px; padding-right:16px;}
+  }
   @keyframes spin{to{transform:rotate(360deg);}}
   .scroll-cue{
     position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
@@ -630,8 +639,9 @@
   <a href="admissions.html">S'inscrire maintenant</a>
   <button type="button" id="admission-banner-close" aria-label="Fermer">&times;</button>
 </div>
+<div id="admission-banner-spacer"></div>
 <style>
-  #admission-banner{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; background:#0f141a; color:#fff; padding:10px 44px 10px 16px; font-size:13.5px; text-align:center; position:relative;}
+  #admission-banner{position:fixed; top:0; left:0; right:0; z-index:120; display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; background:#0f141a; color:#fff; padding:10px 44px 10px 16px; font-size:13.5px; text-align:center;}
   #admission-banner a{background:#e0b13a; color:#0f141a; font-weight:700; padding:6px 14px; border-radius:20px; text-decoration:none; white-space:nowrap;}
   #admission-banner-close{position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:#fff; font-size:20px; line-height:1; cursor:pointer; opacity:.7;}
   #admission-banner-close:hover{opacity:1;}
@@ -1576,19 +1586,31 @@
 })();
 </script>
 <!-- Fin bloc Assistant ARC -->
-
 <script>
 (function(){
   var banner = document.getElementById('admission-banner');
+  var spacer = document.getElementById('admission-banner-spacer');
   if (!banner) return;
-  if (sessionStorage.getItem('arcBannerClosed') === '1') {
-    banner.style.display = 'none';
-    return;
+  var closed = sessionStorage.getItem('arcBannerClosed') === '1';
+
+  function layout(){
+    var h = closed ? 0 : banner.offsetHeight;
+    document.documentElement.style.setProperty('--banner-h', h + 'px');
+    if (spacer) spacer.style.height = h + 'px';
   }
-  document.getElementById('admission-banner-close').addEventListener('click', function(){
+
+  if (closed){
     banner.style.display = 'none';
-    sessionStorage.setItem('arcBannerClosed', '1');
-  });
+  } else {
+    document.getElementById('admission-banner-close').addEventListener('click', function(){
+      banner.style.display = 'none';
+      sessionStorage.setItem('arcBannerClosed', '1');
+      layout();
+    });
+  }
+
+  layout();
+  window.addEventListener('resize', layout);
 })();
 </script>
 </body>
