@@ -757,6 +757,8 @@
   </div>
   <div class="arc-chat-quick" id="arc-chat-quick">
     <button data-q="admission">Admissions</button>
+    <button data-q="test d'admission">Test d'admission</button>
+    <button data-q="pmk">ARC ou PMK ?</button>
     <button data-q="prytarc">Statut PrytARC</button>
     <button data-q="piliers">Les trois piliers</button>
     <button data-q="internat">Internat</button>
@@ -775,27 +777,35 @@
   // Pour ajouter ou modifier une réponse : ajoute un objet avec des mots-clés et un texte.
   var FAQ = [
     {
-      keywords: ["apidon", "arc", "présentation", "présente", "c'est quoi l'ecole", "c'est quoi arc"],
-      reply: "Apidon Royal College (ARC) est un prytanée civil bilingue avec internat, situé à Loumbila près de Ouagadougou. L'école forme ses élèves, appelés PrytARC, autour de trois piliers : Discipline, Rigueur, Humilité."
+      keywords: ["apidon", "arc", "presentation", "presente", "c'est quoi l'ecole", "c'est quoi arc", "vision", "mission", "objectif"],
+      reply: "Apidon Royal College (ARC) est un prytanée civil bilingue avec internat, situé à Loumbila près de Ouagadougou. Sa vocation est de former des jeunes solides sur trois piliers, toujours dans cet ordre : Discipline, Rigueur, Humilité. L'objectif n'est pas seulement de faire réussir des examens, mais de construire des citoyens capables d'écrire le changement, de construire le futur et de bâtir la nation."
     },
     {
-      keywords: ["rentrée", "rentree", "reprise des cours", "début d'année", "debut d'annee", "quand commence"],
+      keywords: ["pmk", "prytanee militaire", "militaire de kadiogo", "arc et pmk", "difference pmk"],
+      reply: "Apidon Royal College n'est pas le PMK. ARC est un prytanée civil, pas un établissement militaire : c'est une école privée bilingue avec internat, gérée par une administration civile. Le vocabulaire militaire que vous pouvez croiser (tenue d'exercice, discipline, rangers) fait partie de la formation civique et patriotique des PrytARC, mais ARC reste un établissement scolaire civil, avec un projet pédagogique propre. Pour toute question de distinction avec d'autres établissements, contactez directement l'école."
+    },
+    {
+      keywords: ["test d'admission", "test admission", "vif", "scpei", "evaluation", "test psychologique", "test de niveau", "tri", "selection", "selectionner"],
+      reply: "À ARC, le test d'admission ne sert pas à trier les candidats mais à mieux connaître le futur PrytARC pour l'accompagner. Il comporte trois volets : un test de niveau scolaire (pour adapter l'accompagnement pédagogique), un test psychologique VIF (intelligence et aptitudes cognitives) et un test psychologique SCPEI (profil émotionnel, social et comportemental). Chaque évaluation est le point de départ d'un parcours de transformation, pas un couperet."
+    },
+    {
+      keywords: ["rentree", "reprise des cours", "debut d'annee", "quand commence"],
       reply: "Les dates de rentrée sont annoncées sur la page Actualités du site. Pour une confirmation précise, le plus sûr est de contacter directement l'école."
     },
     {
       keywords: ["admission", "inscription", "inscrire", "condition", "candidat", "postuler", "dossier d'inscription"],
-      reply: "Les admissions se font en plusieurs étapes : dépôt du dossier, entretien, puis décision. Pour le détail complet et les documents à fournir, consultez la page Admissions du site ou contactez l'école directement."
+      reply: "Les admissions se font en plusieurs étapes : dépôt du dossier, test d'admission (niveau scolaire, VIF, SCPEI), puis décision. Vous trouverez la composition exacte du dossier et les documents à télécharger sur la page Centre de ressources, ou en détail sur la page Admissions."
     },
     {
       keywords: ["prytarc", "statut"],
       reply: "Les élèves d'Apidon Royal College sont appelés PrytARC. Ce statut reflète l'appartenance au prytanée civil et l'engagement dans les trois piliers de l'école."
     },
     {
-      keywords: ["pilier", "discipline", "rigueur", "humilité", "valeur"],
+      keywords: ["pilier", "discipline", "rigueur", "humilite", "valeur"],
       reply: "Apidon Royal College repose sur trois piliers, toujours dans cet ordre : Discipline, Rigueur, Humilité. Ils structurent la vie académique et la vie quotidienne des élèves."
     },
     {
-      keywords: ["internat", "hébergement", "loger", "dortoir", "vie a l'internat"],
+      keywords: ["internat", "hebergement", "loger", "dortoir", "vie a l'internat"],
       reply: "Apidon Royal College est un prytanée civil avec internat. Les élèves y vivent un cadre structuré qui les prépare à l'autonomie et à la vie en collectivité."
     },
     {
@@ -807,31 +817,31 @@
       reply: "La vie scolaire à Apidon Royal College suit un rythme appelé LUDIN. Pour le détail heure par heure, consultez la page Vie scolaire du site."
     },
     {
-      keywords: ["contact", "téléphone", "telephone", "email", "mail", "adresse", "joindre", "appeler"],
-      reply: "Vous trouverez toutes les coordonnées (téléphone, email, adresse) sur la page Contact du site. L'équipe d'Apidon Royal College vous répondra directement."
+      keywords: ["contact", "telephone", "email", "mail", "adresse", "joindre", "appeler", "whatsapp"],
+      reply: "Vous pouvez joindre Apidon Royal College par WhatsApp au +226 51 57 11 36 ou par email à apidonroyalcp@gmail.com. Toutes les coordonnées sont aussi sur la page Contact du site."
     },
     {
-      keywords: ["frais", "prix", "coût", "tarif", "scolarité", "payer"],
-      reply: "Pour les frais de scolarité exacts et les modalités de paiement, merci de contacter directement l'école via la page Contact. Ces informations varient selon le niveau et sont mises à jour par l'administration."
+      keywords: ["frais", "prix", "cout", "tarif", "scolarite", "payer", "combien"],
+      reply: "Les frais de scolarité sont de 200 000 FCFA pour tous les niveaux, de la 6ème à la Terminale, en versement unique. Les frais d'internat et de formation militaire, civique et patriotique sont de 800 000 FCFA (6ème, 5ème, 4ème, 2nde, 1ère) ou 900 000 FCFA (3ème, Tle), payables en plusieurs versements. Le détail complet des modalités de paiement est disponible en téléchargement sur la page Centre de ressources."
     },
     {
-      keywords: ["fondateur", "fonde", "président", "nacro", "directeur"],
+      keywords: ["fondateur", "fonde", "president", "nacro", "directeur"],
       reply: "Apidon Royal College a été fondé par le Dr Gambetta Aboubakar Nacro. Vous pouvez lire son message complet sur la page Le mot du Président."
     },
     {
-      keywords: ["situé", "localisation", "campus", "loumbila", "adresse du campus"],
+      keywords: ["situe", "localisation", "campus", "loumbila", "adresse du campus"],
       reply: "Apidon Royal College se trouve à Loumbila, près de Ouagadougou, au Burkina Faso."
     },
     {
-      keywords: ["bilingue", "langue", "anglais", "français"],
+      keywords: ["bilingue", "langue", "anglais", "francais"],
       reply: "Apidon Royal College est un établissement bilingue, l'enseignement se fait en français et en anglais."
     },
     {
-      keywords: ["réinscription", "reinscri", "renouveler", "année prochaine"],
+      keywords: ["reinscription", "reinscri", "renouveler", "annee prochaine"],
       reply: "Les informations pour poursuivre l'année suivante à Apidon Royal College sont détaillées sur la page Réinscriptions du site."
     },
     {
-      keywords: ["atelier", "mécanique", "mecanique", "soudure", "menuiserie", "technique", "manuel"],
+      keywords: ["atelier", "mecanique", "soudure", "menuiserie", "technique", "manuel"],
       reply: "Les élèves participent à des ateliers techniques (mécanique, soudure, menuiserie). Vous trouverez des photos et le détail de ces activités sur les pages Vie scolaire et Galerie du site."
     },
     {
@@ -839,28 +849,28 @@
       reply: "La galerie photos du site montre le campus, les ateliers et la vie des élèves au quotidien. Retrouvez la page Galerie dans le menu du site."
     },
     {
-      keywords: ["actualité", "actu", "nouvelle", "news"],
+      keywords: ["actualite", "actu", "nouvelle", "news"],
       reply: "Les dernières nouvelles d'Apidon Royal College sont publiées sur la page Actualités du site."
     },
     {
-      keywords: ["document", "brochure", "télécharger", "fourniture", "liste"],
-      reply: "La brochure institutionnelle, la liste de fournitures et les autres documents utiles sont regroupés sur la page Centre de ressources du site."
+      keywords: ["document", "brochure", "telecharger", "fourniture", "liste", "trousseau", "tenue scolaire"],
+      reply: "La liste des fournitures et tenues, le trousseau du prytane, le dossier d'inscription et les frais détaillés sont disponibles en téléchargement sur la page Centre de ressources. Un email ou un numéro WhatsApp vous sera demandé pour recevoir le document."
     },
     {
-      keywords: ["témoignage", "temoignage", "avis", "parent", "ancien"],
+      keywords: ["temoignage", "avis", "parent", "ancien"],
       reply: "Les témoignages d'élèves, d'anciens élèves et de partenaires sont réunis sur la page Témoignages du site."
     },
     {
-      keywords: ["parcours du combattant", "sport", "activité physique", "activite physique"],
+      keywords: ["parcours du combattant", "sport", "activite physique"],
       reply: "La vie scolaire inclut des activités comme le parcours du combattant et diverses activités physiques. Retrouvez le détail sur la page Vie scolaire."
     },
     {
-      keywords: ["uniforme", "tenue", "béret"],
-      reply: "Les PrytARC portent un uniforme avec béret, symbole de leur appartenance à Apidon Royal College. Le détail des tenues est présenté sur la page Vie à ARC."
+      keywords: ["uniforme", "tenue", "beret"],
+      reply: "Les PrytARC portent un uniforme avec béret, symbole de leur appartenance à Apidon Royal College. Le détail des tenues et le trousseau complet sont sur la page Centre de ressources."
     },
     {
-      keywords: ["niveau", "classe", "âge", "cycle"],
-      reply: "Pour connaître les niveaux et classes proposés par Apidon Royal College, consultez la page Admissions ou contactez directement l'école."
+      keywords: ["niveau", "classe", "age", "cycle"],
+      reply: "Apidon Royal College accueille les élèves de la 6ème à la Terminale. Pour le détail par niveau, consultez la page Admissions ou contactez directement l'école."
     },
     {
       keywords: ["visite", "visiter", "portes ouvertes", "rendez vous"],
@@ -871,7 +881,7 @@
       reply: "En internat, la restauration des élèves est assurée sur place par l'école. Pour le détail des repas et des régimes particuliers, contactez directement l'équipe d'Apidon Royal College."
     },
     {
-      keywords: ["santé", "sante", "infirmerie", "médical", "medical", "malade", "urgence médicale", "urgence medicale"],
+      keywords: ["sante", "infirmerie", "medical", "malade", "urgence medicale"],
       reply: "L'école assure un suivi de la santé des élèves en internat. Pour les questions médicales précises (protocole, allergies, contacts d'urgence), merci de contacter directement l'école via la page Contact."
     },
     {
@@ -879,11 +889,11 @@
       reply: "Apidon Royal College entretient des partenariats, notamment avec Great Victory Academy. Pour le détail de ces collaborations, consultez la page Actualités ou contactez l'école."
     },
     {
-      keywords: ["discipline", "sanction", "règlement", "reglement", "règle", "regle", "puni"],
+      keywords: ["discipline", "sanction", "reglement", "regle", "puni"],
       reply: "La discipline est l'un des trois piliers de l'école (avec Rigueur et Humilité). Pour le règlement intérieur détaillé, contactez directement l'équipe d'Apidon Royal College."
     },
     {
-      keywords: ["réseaux sociaux", "reseaux sociaux", "instagram", "facebook", "tiktok", "linkedin", "suivre"],
+      keywords: ["reseaux sociaux", "instagram", "facebook", "tiktok", "linkedin", "suivre"],
       reply: "Apidon Royal College est présent sur Instagram, Facebook, TikTok et LinkedIn. Les liens sont généralement accessibles depuis le pied de page du site."
     }
   ];

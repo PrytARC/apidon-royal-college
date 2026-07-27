@@ -126,6 +126,30 @@
 
   .doc-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:44px;}
   @media (max-width:700px){.doc-grid{grid-template-columns:1fr;}}
+
+  .tariff-block{margin-top:32px;}
+  .tariff-block h3{font-size:18px; margin-bottom:12px;}
+  .tariff-table{width:100%; border-collapse:collapse; font-size:14px; display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap;}
+  .tariff-table thead, .tariff-table tbody{display:table; width:100%; min-width:480px; table-layout:fixed;}
+  .tariff-table th, .tariff-table td{border:1px solid #e2e2e2; padding:10px 12px; text-align:left; white-space:normal;}
+  .tariff-table th{background:var(--sky-tint); font-weight:700;}
+  .tariff-note{font-size:13px; color:#666; margin-top:8px;}
+
+  .doc-card-btn{width:100%; text-align:left; background:none; border:1px solid var(--border,#e2e2e2); font-family:inherit; cursor:pointer;}
+
+  .doc-modal-overlay{position:fixed; inset:0; background:rgba(15,20,26,.55); display:none; align-items:center; justify-content:center; z-index:9999; padding:16px;}
+  .doc-modal-overlay.open{display:flex;}
+  .doc-modal{background:#fff; border-radius:14px; padding:28px 24px; max-width:420px; width:100%; max-height:90vh; overflow-y:auto; position:relative;}
+  .doc-modal-close{position:absolute; top:12px; right:14px; background:none; border:none; font-size:26px; line-height:1; cursor:pointer; color:#666;}
+  .doc-modal h3{margin:0 0 6px; font-size:19px;}
+  .doc-modal-doc-name{font-size:13.5px; color:#666; margin:0 0 18px;}
+  .doc-modal label{display:block; font-size:13.5px; font-weight:600; margin:14px 0 6px;}
+  .doc-modal input[type="text"], .doc-modal input[type="email"]{width:100%; padding:11px 13px; border:1px solid #ccc; border-radius:8px; font-size:15px; font-family:inherit; box-sizing:border-box;}
+  .doc-modal-choice{display:flex; gap:20px; margin-top:14px;}
+  .doc-modal-choice label{display:flex; align-items:center; gap:6px; font-weight:500; margin:0;}
+  .doc-modal-submit{width:100%; margin-top:20px; border:none; text-align:center;}
+  .doc-modal-hint{font-size:12px; color:#888; margin-top:14px;}
+  @media (max-width:480px){.doc-modal{padding:22px 18px;}}
   .doc-card{
     display:flex; align-items:center; gap:18px; background:var(--surface); border:1px solid var(--gray-line); border-radius:14px;
     padding:22px 24px; transition:border-color .25s, transform .25s;
@@ -414,31 +438,81 @@
       <div class="section-intro reveal">
         <p>Ces documents sont mis à jour chaque année par l'administration. Consultez toujours la dernière version disponible.</p>
       </div>
-      <div class="doc-grid">
-        <div class="doc-card reveal">
-          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 13h8M8 17h5"/></svg></span>
-          <div class="doc-info"><h4>Note circulaire</h4><p>Rentrée en cours. Informations générales.</p></div>
-          <div class="doc-action"><span class="doc-btn disabled">Bientôt disponible</span></div>
-        </div>
-        <a href="https://forms.gle/WyYCV99WzE89Z1G89" target="_blank" rel="noopener" class="doc-card reveal reveal-delay-1">
-          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M9 15l2 2 4-4"/></svg></span>
-          <div class="doc-info"><h4>Dossier d'inscription</h4><p>Pour toute nouvelle admission. Formulaire en ligne.</p></div>
-          <div class="doc-action"><span class="doc-btn">Remplir le formulaire</span></div>
-        </a>
-        <a href="https://forms.gle/WyYCV99WzE89Z1G89" target="_blank" rel="noopener" class="doc-card reveal reveal-delay-2">
-          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 13h5M8 17h8"/></svg></span>
-          <div class="doc-info"><h4>Dossier de réinscription</h4><p>Pour les familles déjà inscrites. Formulaire en ligne.</p></div>
-          <div class="doc-action"><span class="doc-btn">Remplir le formulaire</span></div>
-        </a>
-        <div class="doc-card reveal reveal-delay-3">
-          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3v18M6 8h4a2 2 0 0 0 2-2V3M18 21V3M14 21v-7a2 2 0 0 1 2-2h2"/></svg></span>
-          <div class="doc-info"><h4>Liste des fournitures</h4><p>Par niveau, pour l'année en cours.</p></div>
-          <div class="doc-action"><span class="doc-btn disabled">Bientôt disponible</span></div>
-        </div>
+      <div class="tariff-block reveal">
+        <h3>Frais de scolarité 2026-2027</h3>
+        <table class="tariff-table">
+          <thead><tr><th>Classes</th><th>Frais</th></tr></thead>
+          <tbody>
+            <tr><td>6ème, 5ème, 4ème, 2nde, 1ère</td><td>200 000 FCFA</td></tr>
+            <tr><td>3ème, Terminale</td><td>200 000 FCFA</td></tr>
+          </tbody>
+        </table>
+        <p class="tariff-note">Versement unique. Toute autre modalité souhaitée fait l'objet d'une demande écrite.</p>
       </div>
-      <div class="note-callout">Ces documents seront mis en ligne par l'administration au fil de leur publication officielle. Pour une version immédiate, contactez notre équipe.</div>
+
+      <div class="tariff-block reveal reveal-delay-1">
+        <h3>Frais d'internat et de formation militaire, civique et patriotique 2026-2027</h3>
+        <table class="tariff-table">
+          <thead><tr><th>Classes</th><th>Frais</th><th>Acompte inscription</th><th>30 sept.</th><th>30 nov.</th><th>30 déc.</th></tr></thead>
+          <tbody>
+            <tr><td>6ème, 5ème, 4ème, 2nde, 1ère</td><td>800 000 FCFA</td><td>150 000</td><td>300 000</td><td>250 000</td><td>100 000</td></tr>
+            <tr><td>3ème, Terminale</td><td>900 000 FCFA</td><td>150 000</td><td>350 000</td><td>300 000</td><td>100 000</td></tr>
+          </tbody>
+        </table>
+        <p class="tariff-note">Contacts opérationnels : Mme ROAMBA (51 57 11 36) et la Chargée d'accueil (54 29 13 19).</p>
+      </div>
+
+      <div class="doc-grid">
+        <button type="button" class="doc-card reveal doc-card-btn" data-doc="Dossier d'inscription et de réinscription 2026-2027" data-file="documents/D1-composition-dossier-2026-2027.pdf">
+          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M9 15l2 2 4-4"/></svg></span>
+          <div class="doc-info"><h4>Composition du dossier</h4><p>Inscription et réinscription, année 2026-2027.</p></div>
+          <div class="doc-action"><span class="doc-btn">Recevoir le document</span></div>
+        </button>
+        <button type="button" class="doc-card reveal reveal-delay-1 doc-card-btn" data-doc="Frais de scolarité 2026-2027" data-file="documents/D3-frais-de-scolarite-2026-2027.pdf">
+          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 13h5M8 17h8"/></svg></span>
+          <div class="doc-info"><h4>Frais de scolarité</h4><p>Détail complet et modalités de paiement.</p></div>
+          <div class="doc-action"><span class="doc-btn">Recevoir le document</span></div>
+        </button>
+        <button type="button" class="doc-card reveal reveal-delay-2 doc-card-btn" data-doc="Frais d'internat 2026-2027" data-file="documents/D4-frais-internat-2026-2027.pdf">
+          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 13h8M8 17h5"/></svg></span>
+          <div class="doc-info"><h4>Frais d'internat</h4><p>Formation militaire, civique et patriotique incluse.</p></div>
+          <div class="doc-action"><span class="doc-btn">Recevoir le document</span></div>
+        </button>
+        <button type="button" class="doc-card reveal doc-card-btn" data-doc="Fournitures et tenues 2026-2027" data-file="documents/D5-fournitures-et-tenues-2026-2027.pdf">
+          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3v18M6 8h4a2 2 0 0 0 2-2V3M18 21V3M14 21v-7a2 2 0 0 1 2-2h2"/></svg></span>
+          <div class="doc-info"><h4>Fournitures et tenues</h4><p>Liste complète, année 2026-2027.</p></div>
+          <div class="doc-action"><span class="doc-btn">Recevoir le document</span></div>
+        </button>
+        <button type="button" class="doc-card reveal reveal-delay-1 doc-card-btn" data-doc="Trousseau du prytane 2026-2027" data-file="documents/D6-trousseau-du-prytane-2026-2027.pdf">
+          <span class="doc-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3v18M6 8h4a2 2 0 0 0 2-2V3M18 21V3M14 21v-7a2 2 0 0 1 2-2h2"/></svg></span>
+          <div class="doc-info"><h4>Trousseau du prytane</h4><p>Liste pour l'internat, année 2026-2027.</p></div>
+          <div class="doc-action"><span class="doc-btn">Recevoir le document</span></div>
+        </button>
+      </div>
+      <div class="note-callout">Ces documents sont mis à jour chaque année par l'administration. Un email ou un numéro WhatsApp au choix vous sera demandé pour recevoir le document.</div>
     </div>
   </section>
+
+  <!-- DOC REQUEST MODAL -->
+  <div id="doc-modal-overlay" class="doc-modal-overlay" aria-hidden="true">
+    <div class="doc-modal" role="dialog" aria-modal="true" aria-labelledby="doc-modal-title">
+      <button type="button" class="doc-modal-close" id="doc-modal-close" aria-label="Fermer">&times;</button>
+      <h3 id="doc-modal-title">Recevoir le document</h3>
+      <p id="doc-modal-doc-name" class="doc-modal-doc-name"></p>
+      <form id="doc-modal-form">
+        <label for="doc-modal-name">Nom complet</label>
+        <input type="text" id="doc-modal-name" required autocomplete="name" />
+        <div class="doc-modal-choice">
+          <label><input type="radio" name="doc-modal-channel" value="email" checked> Email</label>
+          <label><input type="radio" name="doc-modal-channel" value="whatsapp"> WhatsApp</label>
+        </div>
+        <label for="doc-modal-contact" id="doc-modal-contact-label">Adresse email</label>
+        <input type="text" id="doc-modal-contact" required />
+        <button type="submit" class="doc-btn doc-modal-submit">Obtenir le document</button>
+      </form>
+      <p class="doc-modal-hint">Vos coordonnées sont utilisées uniquement par Apidon Royal College pour vous accompagner dans votre démarche.</p>
+    </div>
+  </div>
 
   <!-- INSTITUTIONAL -->
   <section style="background:var(--sky-tint);">
@@ -775,6 +849,8 @@
   </div>
   <div class="arc-chat-quick" id="arc-chat-quick">
     <button data-q="admission">Admissions</button>
+    <button data-q="test d'admission">Test d'admission</button>
+    <button data-q="pmk">ARC ou PMK ?</button>
     <button data-q="prytarc">Statut PrytARC</button>
     <button data-q="piliers">Les trois piliers</button>
     <button data-q="internat">Internat</button>
@@ -793,27 +869,35 @@
   // Pour ajouter ou modifier une réponse : ajoute un objet avec des mots-clés et un texte.
   var FAQ = [
     {
-      keywords: ["apidon", "arc", "présentation", "présente", "c'est quoi l'ecole", "c'est quoi arc"],
-      reply: "Apidon Royal College (ARC) est un prytanée civil bilingue avec internat, situé à Loumbila près de Ouagadougou. L'école forme ses élèves, appelés PrytARC, autour de trois piliers : Discipline, Rigueur, Humilité."
+      keywords: ["apidon", "arc", "presentation", "presente", "c'est quoi l'ecole", "c'est quoi arc", "vision", "mission", "objectif"],
+      reply: "Apidon Royal College (ARC) est un prytanée civil bilingue avec internat, situé à Loumbila près de Ouagadougou. Sa vocation est de former des jeunes solides sur trois piliers, toujours dans cet ordre : Discipline, Rigueur, Humilité. L'objectif n'est pas seulement de faire réussir des examens, mais de construire des citoyens capables d'écrire le changement, de construire le futur et de bâtir la nation."
     },
     {
-      keywords: ["rentrée", "rentree", "reprise des cours", "début d'année", "debut d'annee", "quand commence"],
+      keywords: ["pmk", "prytanee militaire", "militaire de kadiogo", "arc et pmk", "difference pmk"],
+      reply: "Apidon Royal College n'est pas le PMK. ARC est un prytanée civil, pas un établissement militaire : c'est une école privée bilingue avec internat, gérée par une administration civile. Le vocabulaire militaire que vous pouvez croiser (tenue d'exercice, discipline, rangers) fait partie de la formation civique et patriotique des PrytARC, mais ARC reste un établissement scolaire civil, avec un projet pédagogique propre. Pour toute question de distinction avec d'autres établissements, contactez directement l'école."
+    },
+    {
+      keywords: ["test d'admission", "test admission", "vif", "scpei", "evaluation", "test psychologique", "test de niveau", "tri", "selection", "selectionner"],
+      reply: "À ARC, le test d'admission ne sert pas à trier les candidats mais à mieux connaître le futur PrytARC pour l'accompagner. Il comporte trois volets : un test de niveau scolaire (pour adapter l'accompagnement pédagogique), un test psychologique VIF (intelligence et aptitudes cognitives) et un test psychologique SCPEI (profil émotionnel, social et comportemental). Chaque évaluation est le point de départ d'un parcours de transformation, pas un couperet."
+    },
+    {
+      keywords: ["rentree", "reprise des cours", "debut d'annee", "quand commence"],
       reply: "Les dates de rentrée sont annoncées sur la page Actualités du site. Pour une confirmation précise, le plus sûr est de contacter directement l'école."
     },
     {
       keywords: ["admission", "inscription", "inscrire", "condition", "candidat", "postuler", "dossier d'inscription"],
-      reply: "Les admissions se font en plusieurs étapes : dépôt du dossier, entretien, puis décision. Pour le détail complet et les documents à fournir, consultez la page Admissions du site ou contactez l'école directement."
+      reply: "Les admissions se font en plusieurs étapes : dépôt du dossier, test d'admission (niveau scolaire, VIF, SCPEI), puis décision. Vous trouverez la composition exacte du dossier et les documents à télécharger sur la page Centre de ressources, ou en détail sur la page Admissions."
     },
     {
       keywords: ["prytarc", "statut"],
       reply: "Les élèves d'Apidon Royal College sont appelés PrytARC. Ce statut reflète l'appartenance au prytanée civil et l'engagement dans les trois piliers de l'école."
     },
     {
-      keywords: ["pilier", "discipline", "rigueur", "humilité", "valeur"],
+      keywords: ["pilier", "discipline", "rigueur", "humilite", "valeur"],
       reply: "Apidon Royal College repose sur trois piliers, toujours dans cet ordre : Discipline, Rigueur, Humilité. Ils structurent la vie académique et la vie quotidienne des élèves."
     },
     {
-      keywords: ["internat", "hébergement", "loger", "dortoir", "vie a l'internat"],
+      keywords: ["internat", "hebergement", "loger", "dortoir", "vie a l'internat"],
       reply: "Apidon Royal College est un prytanée civil avec internat. Les élèves y vivent un cadre structuré qui les prépare à l'autonomie et à la vie en collectivité."
     },
     {
@@ -825,31 +909,31 @@
       reply: "La vie scolaire à Apidon Royal College suit un rythme appelé LUDIN. Pour le détail heure par heure, consultez la page Vie scolaire du site."
     },
     {
-      keywords: ["contact", "téléphone", "telephone", "email", "mail", "adresse", "joindre", "appeler"],
-      reply: "Vous trouverez toutes les coordonnées (téléphone, email, adresse) sur la page Contact du site. L'équipe d'Apidon Royal College vous répondra directement."
+      keywords: ["contact", "telephone", "email", "mail", "adresse", "joindre", "appeler", "whatsapp"],
+      reply: "Vous pouvez joindre Apidon Royal College par WhatsApp au +226 51 57 11 36 ou par email à apidonroyalcp@gmail.com. Toutes les coordonnées sont aussi sur la page Contact du site."
     },
     {
-      keywords: ["frais", "prix", "coût", "tarif", "scolarité", "payer"],
-      reply: "Pour les frais de scolarité exacts et les modalités de paiement, merci de contacter directement l'école via la page Contact. Ces informations varient selon le niveau et sont mises à jour par l'administration."
+      keywords: ["frais", "prix", "cout", "tarif", "scolarite", "payer", "combien"],
+      reply: "Les frais de scolarité sont de 200 000 FCFA pour tous les niveaux, de la 6ème à la Terminale, en versement unique. Les frais d'internat et de formation militaire, civique et patriotique sont de 800 000 FCFA (6ème, 5ème, 4ème, 2nde, 1ère) ou 900 000 FCFA (3ème, Tle), payables en plusieurs versements. Le détail complet des modalités de paiement est disponible en téléchargement sur la page Centre de ressources."
     },
     {
-      keywords: ["fondateur", "fonde", "président", "nacro", "directeur"],
+      keywords: ["fondateur", "fonde", "president", "nacro", "directeur"],
       reply: "Apidon Royal College a été fondé par le Dr Gambetta Aboubakar Nacro. Vous pouvez lire son message complet sur la page Le mot du Président."
     },
     {
-      keywords: ["situé", "localisation", "campus", "loumbila", "adresse du campus"],
+      keywords: ["situe", "localisation", "campus", "loumbila", "adresse du campus"],
       reply: "Apidon Royal College se trouve à Loumbila, près de Ouagadougou, au Burkina Faso."
     },
     {
-      keywords: ["bilingue", "langue", "anglais", "français"],
+      keywords: ["bilingue", "langue", "anglais", "francais"],
       reply: "Apidon Royal College est un établissement bilingue, l'enseignement se fait en français et en anglais."
     },
     {
-      keywords: ["réinscription", "reinscri", "renouveler", "année prochaine"],
+      keywords: ["reinscription", "reinscri", "renouveler", "annee prochaine"],
       reply: "Les informations pour poursuivre l'année suivante à Apidon Royal College sont détaillées sur la page Réinscriptions du site."
     },
     {
-      keywords: ["atelier", "mécanique", "mecanique", "soudure", "menuiserie", "technique", "manuel"],
+      keywords: ["atelier", "mecanique", "soudure", "menuiserie", "technique", "manuel"],
       reply: "Les élèves participent à des ateliers techniques (mécanique, soudure, menuiserie). Vous trouverez des photos et le détail de ces activités sur les pages Vie scolaire et Galerie du site."
     },
     {
@@ -857,28 +941,28 @@
       reply: "La galerie photos du site montre le campus, les ateliers et la vie des élèves au quotidien. Retrouvez la page Galerie dans le menu du site."
     },
     {
-      keywords: ["actualité", "actu", "nouvelle", "news"],
+      keywords: ["actualite", "actu", "nouvelle", "news"],
       reply: "Les dernières nouvelles d'Apidon Royal College sont publiées sur la page Actualités du site."
     },
     {
-      keywords: ["document", "brochure", "télécharger", "fourniture", "liste"],
-      reply: "La brochure institutionnelle, la liste de fournitures et les autres documents utiles sont regroupés sur la page Centre de ressources du site."
+      keywords: ["document", "brochure", "telecharger", "fourniture", "liste", "trousseau", "tenue scolaire"],
+      reply: "La liste des fournitures et tenues, le trousseau du prytane, le dossier d'inscription et les frais détaillés sont disponibles en téléchargement sur la page Centre de ressources. Un email ou un numéro WhatsApp vous sera demandé pour recevoir le document."
     },
     {
-      keywords: ["témoignage", "temoignage", "avis", "parent", "ancien"],
+      keywords: ["temoignage", "avis", "parent", "ancien"],
       reply: "Les témoignages d'élèves, d'anciens élèves et de partenaires sont réunis sur la page Témoignages du site."
     },
     {
-      keywords: ["parcours du combattant", "sport", "activité physique", "activite physique"],
+      keywords: ["parcours du combattant", "sport", "activite physique"],
       reply: "La vie scolaire inclut des activités comme le parcours du combattant et diverses activités physiques. Retrouvez le détail sur la page Vie scolaire."
     },
     {
-      keywords: ["uniforme", "tenue", "béret"],
-      reply: "Les PrytARC portent un uniforme avec béret, symbole de leur appartenance à Apidon Royal College. Le détail des tenues est présenté sur la page Vie à ARC."
+      keywords: ["uniforme", "tenue", "beret"],
+      reply: "Les PrytARC portent un uniforme avec béret, symbole de leur appartenance à Apidon Royal College. Le détail des tenues et le trousseau complet sont sur la page Centre de ressources."
     },
     {
-      keywords: ["niveau", "classe", "âge", "cycle"],
-      reply: "Pour connaître les niveaux et classes proposés par Apidon Royal College, consultez la page Admissions ou contactez directement l'école."
+      keywords: ["niveau", "classe", "age", "cycle"],
+      reply: "Apidon Royal College accueille les élèves de la 6ème à la Terminale. Pour le détail par niveau, consultez la page Admissions ou contactez directement l'école."
     },
     {
       keywords: ["visite", "visiter", "portes ouvertes", "rendez vous"],
@@ -889,7 +973,7 @@
       reply: "En internat, la restauration des élèves est assurée sur place par l'école. Pour le détail des repas et des régimes particuliers, contactez directement l'équipe d'Apidon Royal College."
     },
     {
-      keywords: ["santé", "sante", "infirmerie", "médical", "medical", "malade", "urgence médicale", "urgence medicale"],
+      keywords: ["sante", "infirmerie", "medical", "malade", "urgence medicale"],
       reply: "L'école assure un suivi de la santé des élèves en internat. Pour les questions médicales précises (protocole, allergies, contacts d'urgence), merci de contacter directement l'école via la page Contact."
     },
     {
@@ -897,11 +981,11 @@
       reply: "Apidon Royal College entretient des partenariats, notamment avec Great Victory Academy. Pour le détail de ces collaborations, consultez la page Actualités ou contactez l'école."
     },
     {
-      keywords: ["discipline", "sanction", "règlement", "reglement", "règle", "regle", "puni"],
+      keywords: ["discipline", "sanction", "reglement", "regle", "puni"],
       reply: "La discipline est l'un des trois piliers de l'école (avec Rigueur et Humilité). Pour le règlement intérieur détaillé, contactez directement l'équipe d'Apidon Royal College."
     },
     {
-      keywords: ["réseaux sociaux", "reseaux sociaux", "instagram", "facebook", "tiktok", "linkedin", "suivre"],
+      keywords: ["reseaux sociaux", "instagram", "facebook", "tiktok", "linkedin", "suivre"],
       reply: "Apidon Royal College est présent sur Instagram, Facebook, TikTok et LinkedIn. Les liens sont généralement accessibles depuis le pied de page du site."
     }
   ];
@@ -1045,5 +1129,75 @@
 </script>
 <!-- Fin bloc Assistant ARC -->
 
+<script>
+(function(){
+  // Demande de document : ouvre une petite fenêtre, collecte nom + email ou whatsapp,
+  // envoie la demande à l'école (email ou whatsapp pré-rempli), puis ouvre le PDF.
+  // Pas de serveur, pas de coût : la boîte mail ou le WhatsApp de l'école sert de base de contacts.
+  var overlay = document.getElementById('doc-modal-overlay');
+  var closeBtn = document.getElementById('doc-modal-close');
+  var form = document.getElementById('doc-modal-form');
+  var docNameEl = document.getElementById('doc-modal-doc-name');
+  var contactLabel = document.getElementById('doc-modal-contact-label');
+  var contactInput = document.getElementById('doc-modal-contact');
+  var currentDoc = '';
+  var currentFile = '';
+
+  var SCHOOL_EMAIL = 'apidonroyalcp@gmail.com';
+  var SCHOOL_WHATSAPP = '22651571136';
+
+  document.querySelectorAll('.doc-card-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      currentDoc = btn.getAttribute('data-doc');
+      currentFile = btn.getAttribute('data-file');
+      docNameEl.textContent = currentDoc;
+      form.reset();
+      contactLabel.textContent = 'Adresse email';
+      contactInput.type = 'email';
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  function closeModal(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+
+  form.querySelectorAll('input[name="doc-modal-channel"]').forEach(function(radio){
+    radio.addEventListener('change', function(){
+      if (radio.value === 'whatsapp' && radio.checked){
+        contactLabel.textContent = 'Numéro WhatsApp';
+        contactInput.type = 'tel';
+        contactInput.placeholder = 'Ex : 70 12 34 56';
+      } else if (radio.checked){
+        contactLabel.textContent = 'Adresse email';
+        contactInput.type = 'email';
+        contactInput.placeholder = '';
+      }
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('doc-modal-name').value.trim();
+    var contact = contactInput.value.trim();
+    var channel = form.querySelector('input[name="doc-modal-channel"]:checked').value;
+    var msg = 'Nouvelle demande de document sur le site ARC.\nDocument : ' + currentDoc +
+      '\nNom : ' + name + '\nContact (' + channel + ') : ' + contact;
+
+    if (channel === 'whatsapp'){
+      window.open('https://wa.me/' + SCHOOL_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank');
+    } else {
+      window.open('mailto:' + SCHOOL_EMAIL + '?subject=' + encodeURIComponent('Demande de document : ' + currentDoc) + '&body=' + encodeURIComponent(msg), '_blank');
+    }
+
+    window.open(currentFile, '_blank');
+    closeModal();
+  });
+})();
+</script>
 </body>
 </html>
