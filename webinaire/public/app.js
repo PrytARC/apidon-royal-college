@@ -45,6 +45,8 @@
     heures: C.debut && C.fin ? heures() : "",
     fuseau: fuseauTexte(),
     telephone: C.telephone,
+    email: C.email,
+    emailHref: C.email ? "mailto:" + C.email : "",
     adresseSite: C.adresseSite,
     whatsappUrl: C.whatsappUrl,
     teamsUrl: C.teamsUrl,

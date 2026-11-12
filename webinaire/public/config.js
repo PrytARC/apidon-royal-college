@@ -9,7 +9,7 @@ window.WEBINAIRE = {
   titreAccent: "avancé",
 
   // Date et horaires (format AAAA-MM-JJ et HH:MM, heure locale du webinaire)
-  date: "2026-11-25",
+  date: "2026-11-28",
   debut: "16:00",
   fin: "18:00",
   // Décalage horaire par rapport à l'heure UTC. Burkina Faso (GMT) : +00:00
@@ -30,6 +30,7 @@ window.WEBINAIRE = {
 
   // Pied de page
   adresseSite: "webinaire.apidonroyalcollege.com",
+  email: "apidonacademiofscience@yahoo.com",
   telephone: "+226 45 01 34 34",
   // Lien de la page LinkedIn de 2AS. Laisse vide tant que tu n'as pas l'adresse exacte : l'icône reste alors cachée.
   linkedinUrl: "",
