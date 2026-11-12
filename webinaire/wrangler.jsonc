@@ -1,0 +1,9 @@
+{
+  // Configuration Cloudflare du projet "webinaire" : il publie uniquement le dossier public/.
+  // Le champ "name" doit être exactement le nom du projet dans Cloudflare.
+  "name": "webinaire-2as",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public"
+  }
+}
