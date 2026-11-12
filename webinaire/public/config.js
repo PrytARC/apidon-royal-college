@@ -25,6 +25,9 @@ window.WEBINAIRE = {
   // Clé publique Cloudflare Turnstile (facultatif, voir DEPLOIEMENT.md, étape 4). Laisse vide pour ne pas l'utiliser.
   turnstileSiteKey: "",
 
+  // Objet 3D du bandeau (facultatif) : chemin de l'image, par exemple "assets/objet-3d.webp". Laisse vide pour ne rien afficher.
+  objet3d: "assets/objet-3d.webp",
+
   // Pied de page
   adresseSite: "webinaire.apidonroyalcollege.com",
   telephone: "+226 45 01 34 34",

@@ -31,128 +31,234 @@
 </head>
 <body>
 
-  <div class="ruban" aria-hidden="true">
+  <!-- Ruban Excel : la barre de formule suit la cellule choisie -->
+  <div class="ruban">
     <div class="ruban-vert"></div>
-    <div class="barre-formule">
-      <span class="boite-nom">A1</span>
+    <div class="barre-formule" aria-hidden="true">
+      <span class="boite-nom" id="nom-cellule">A1</span>
       <span class="fx">fx</span>
-      <span class="champ-formule"></span>
+      <span class="champ-formule" id="formule"></span>
     </div>
   </div>
 
-  <div class="page">
+  <header class="entete">
+    <div class="wrap entete-in">
+      <a href="#accueil" aria-label="2AS, Apidon Academy of Science"><img class="logo" src="assets/logo-2as.webp" alt="2AS, Apidon Academy of Science" width="720" height="371"></a>
+      <a class="bouton bouton-petit" href="#inscription">Je m'inscris</a>
+    </div>
+  </header>
 
-    <header class="entete">
-      <img class="logo" src="assets/logo-2as.webp" alt="2AS, Apidon Academy of Science" width="720" height="371">
-    </header>
+  <main>
 
-    <main class="grille">
+    <section class="hero" id="accueil" data-onglet="accueil">
+      <div class="wrap hero-grille">
 
-      <section class="zone-hero">
-        <h1 class="titre"><span class="mot" data-cfg="titre">Excel</span> <span class="mot accent" data-cfg="titreAccent">avancé</span></h1>
-        <p class="accroche">Arrête de perdre ton temps sur Excel</p>
+        <div class="hero-texte">
+          <p class="pastille-live"><i></i>Webinaire gratuit</p>
+          <h1 class="titre"><span class="mot" data-cfg="titre">Excel</span> <span class="mot accent" data-cfg="titreAccent">avancé</span></h1>
+          <p class="accroche">Arrête de perdre ton temps sur Excel</p>
 
-        <div class="infos">
-          <p class="date" data-cfg="dateLongue">Mercredi 25 novembre 2026</p>
-          <ul class="pastilles">
-            <li class="pastille heure" data-cfg="heures">16h à 18h</li>
-            <li class="pastille teams"><span>Sur</span> <img src="assets/teams.png" alt="Microsoft Teams" width="130" height="109"></li>
-            <li class="pastille gratuit">Gratuit</li>
-          </ul>
-        </div>
-
-        <a class="bouton" href="#inscription">Réserve maintenant ta place</a>
-      </section>
-
-      <section class="zone-themes" aria-label="Au programme">
-        <ul class="puces">
-          <li>Des formules qui travaillent à ta place</li>
-          <li>Des tableaux de bord qui impressionnent</li>
-          <li>Des chiffres qui parlent</li>
-          <li>Les certifications qui font la différence</li>
-        </ul>
-      </section>
-
-      <div class="zone-objet">
-        <img class="objet" src="assets/objet-3d.webp" alt="Tableur en 3D avec un graphique en barres" width="757" height="971">
-      </div>
-
-      <section class="zone-form" id="inscription" aria-labelledby="titre-form">
-        <div id="bloc-form">
-          <h2 id="titre-form">Inscris-toi</h2>
-
-          <form id="form" novalidate autocomplete="on">
-            <div class="champ">
-              <label for="prenom">Prénom</label>
-              <input id="prenom" name="prenom" type="text" autocomplete="given-name" autocapitalize="words" maxlength="60" required aria-describedby="err-prenom">
-              <p class="erreur" id="err-prenom" role="alert"></p>
-            </div>
-
-            <div class="champ">
-              <label for="nom">Nom</label>
-              <input id="nom" name="nom" type="text" autocomplete="family-name" autocapitalize="words" maxlength="60" required aria-describedby="err-nom">
-              <p class="erreur" id="err-nom" role="alert"></p>
-            </div>
-
-            <div class="champ">
-              <label for="email">E-mail</label>
-              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="120" required aria-describedby="err-email">
-              <p class="erreur" id="err-email" role="alert"></p>
-            </div>
-
-            <div class="champ">
-              <label for="telephone">Téléphone WhatsApp</label>
-              <div class="tel">
-                <select id="indicatif" name="indicatif" aria-label="Indicatif du pays"></select>
-                <input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" required aria-describedby="err-telephone">
-              </div>
-              <div class="autre-indicatif" id="bloc-autre" hidden>
-                <label for="autre-code">Indicatif du pays, par exemple +44</label>
-                <input id="autre-code" name="autre-code" type="text" inputmode="tel" maxlength="6" placeholder="+">
-              </div>
-              <p class="erreur" id="err-telephone" role="alert"></p>
-            </div>
-
-            <div class="champ">
-              <label for="profession">Profession ou domaine <span class="facultatif">(facultatif)</span></label>
-              <input id="profession" name="profession" type="text" autocomplete="organization-title" maxlength="100" aria-describedby="err-profession">
-              <p class="erreur" id="err-profession" role="alert"></p>
-            </div>
-
-            <div class="piege" aria-hidden="true">
-              <label for="site">Ne remplis pas ce champ</label>
-              <input id="site" name="site" type="text" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div id="turnstile" class="turnstile"></div>
-
-            <p class="erreur erreur-globale" id="err-globale" role="alert"></p>
-
-            <button class="bouton" type="submit" id="envoyer">Réserve maintenant ta place</button>
-          </form>
-        </div>
-
-        <div id="confirmation" class="confirmation" hidden tabindex="-1" aria-live="polite">
-          <h2 id="titre-confirmation">Ta place est réservée</h2>
-          <p class="doublon" id="doublon" hidden>Cette adresse e-mail était déjà inscrite, ta place est bien confirmée.</p>
-          <div class="infos infos-confirmation">
-            <p class="date" data-cfg="dateLongue">Mercredi 25 novembre 2026</p>
-            <ul class="pastilles">
-              <li class="pastille heure" data-cfg="heures">16h à 18h</li>
-              <li class="pastille teams"><span>Sur</span> <img src="assets/teams.png" alt="Microsoft Teams" width="130" height="109"></li>
-            </ul>
+          <div class="faits">
+            <p class="cell fait fait-date" id="c-date" data-ref="B3"><span class="etiq">Date</span><span class="val-fait" data-cfg="dateLongue">Mercredi 25 novembre 2026</span></p>
+            <p class="cell fait" id="c-heure" data-ref="C3"><span class="etiq">Heure</span><span class="val-fait" data-cfg="heures">16h à 18h</span></p>
+            <p class="cell fait" data-ref="D3"><span class="etiq">Lieu</span><span class="val-fait teams-ligne">Sur <img src="assets/teams.png" alt="Microsoft Teams" width="130" height="109"></span></p>
+            <p class="cell fait" data-ref="E3"><span class="etiq">Prix</span><span class="val-fait">Gratuit</span></p>
           </div>
-          <a class="bouton bouton-wa" data-href="whatsappUrl" href="#" target="_blank" rel="noopener">
-            <svg class="ico-wa" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24Zm-3.2 4.2c-.17 0-.45.06-.69.32-.23.26-.9.88-.9 2.15s.92 2.5 1.05 2.67c.13.17 1.8 2.88 4.44 3.92 2.2.87 2.64.7 3.12.66.48-.04 1.54-.63 1.76-1.24.22-.6.22-1.13.15-1.24-.06-.1-.23-.17-.49-.3-.26-.13-1.54-.76-1.78-.85-.24-.09-.4-.13-.58.13-.17.26-.67.85-.82 1.02-.15.17-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.29-.77-.69-1.3-1.54-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.58-1.4-.8-1.91-.2-.5-.42-.43-.58-.44h-.5Z"/></svg>
-            <span>Rejoindre la chaîne WhatsApp</span>
-          </a>
-          <p class="agenda"><a id="lien-agenda" href="#" download="webinaire-excel-avance.ics">Ajouter à mon agenda</a></p>
+
+          <a class="bouton bouton-hero" href="#inscription">Réserve maintenant ta place</a>
+
+          <div class="compte" id="compte" aria-label="Compte à rebours avant le webinaire">
+            <p class="cell cpt" id="c-j" data-ref="B5"><b id="cd-j">00</b><span>jours</span></p>
+            <p class="cell cpt" id="c-h" data-ref="C5"><b id="cd-h">00</b><span>heures</span></p>
+            <p class="cell cpt" id="c-m" data-ref="D5"><b id="cd-m">00</b><span>minutes</span></p>
+            <p class="cell cpt" id="c-s" data-ref="E5"><b id="cd-s">00</b><span>secondes</span></p>
+          </div>
+          <p class="direct" id="direct" hidden></p>
         </div>
-      </section>
 
-    </main>
+        <div class="hero-visuel">
+          <img class="objet" id="objet3d" src="assets/objet-3d.webp" alt="Tableur en 3D avec un graphique en barres" width="860" height="637" hidden>
+          <div class="classeur">
+            <p class="classeur-titre"><span class="carre" aria-hidden="true"></span>Ventes.xlsx</p>
+            <div class="tableur">
+              <div class="ligne ligne-lettres" aria-hidden="true"><span class="rh"></span><span class="lettre">A</span><span class="lettre">B</span></div>
+              <div class="ligne"><span class="rh" aria-hidden="true">1</span><span class="cell cc cc-tete" data-ref="A1">Mois</span><span class="cell cc cc-tete" data-ref="B1">Ventes</span></div>
+              <div class="ligne"><span class="rh" aria-hidden="true">2</span><span class="cell cc" data-ref="A2">Janvier</span><span class="cell cc cc-val" data-ref="B2"><input class="val" type="number" inputmode="numeric" min="0" max="999" value="12" aria-label="Ventes de janvier"></span></div>
+              <div class="ligne"><span class="rh" aria-hidden="true">3</span><span class="cell cc" data-ref="A3">Février</span><span class="cell cc cc-val" data-ref="B3"><input class="val" type="number" inputmode="numeric" min="0" max="999" value="18" aria-label="Ventes de février"></span></div>
+              <div class="ligne"><span class="rh" aria-hidden="true">4</span><span class="cell cc" data-ref="A4">Mars</span><span class="cell cc cc-val" data-ref="B4"><input class="val" type="number" inputmode="numeric" min="0" max="999" value="15" aria-label="Ventes de mars"></span></div>
+              <div class="ligne"><span class="rh" aria-hidden="true">5</span><span class="cell cc" data-ref="A5">Avril</span><span class="cell cc cc-val" data-ref="B5"><input class="val" type="number" inputmode="numeric" min="0" max="999" value="24" aria-label="Ventes d'avril"></span></div>
+              <div class="ligne"><span class="rh" aria-hidden="true">6</span><span class="cell cc" data-ref="A6">Mai</span><span class="cell cc cc-val" data-ref="B6"><input class="val" type="number" inputmode="numeric" min="0" max="999" value="31" aria-label="Ventes de mai"></span></div>
+              <div class="ligne ligne-total"><span class="rh" aria-hidden="true">7</span><span class="cell cc cc-tete" data-ref="A7">Total</span><span class="cell cc cc-tete" data-ref="B7" data-f="=SOMME(B2:B6)" id="total">100</span></div>
+            </div>
+            <div class="graphe" id="graphe" aria-hidden="true"></div>
+            <p class="indice">Modifie un chiffre : le total et le graphique suivent.</p>
+          </div>
+        </div>
 
-    <footer class="pied">
+      </div>
+    </section>
+
+    <section class="zones" aria-labelledby="t-zones">
+      <div class="wrap">
+        <h2 id="t-zones">Chez toi, c'est à quelle heure ?</h2>
+        <ul class="zones-liste" id="zones"></ul>
+      </div>
+    </section>
+
+    <section class="bande" id="programme" data-onglet="programme">
+      <div class="wrap">
+        <div class="tete-section">
+          <p class="surtitre">Au programme</p>
+          <h2>Quatre choses que tu vas travailler</h2>
+        </div>
+        <div class="feuille" role="list">
+          <div class="feuille-tete" aria-hidden="true"><span class="rh"></span><span class="lettre">A</span></div>
+          <div class="feuille-ligne" role="listitem"><span class="rh" aria-hidden="true">1</span><p class="cell theme" data-ref="A1"><span class="badge" aria-hidden="true">fx</span><span>Des formules qui travaillent à ta place</span></p></div>
+          <div class="feuille-ligne" role="listitem"><span class="rh" aria-hidden="true">2</span><p class="cell theme" data-ref="A2"><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" focusable="false"><path d="M4 20V11h4v9zM10 20V4h4v16zM16 20v-6h4v6z" fill="currentColor"/></svg></span><span>Des tableaux de bord qui impressionnent</span></p></div>
+          <div class="feuille-ligne" role="listitem"><span class="rh" aria-hidden="true">3</span><p class="cell theme" data-ref="A3"><span class="badge" aria-hidden="true">123</span><span>Des chiffres qui parlent</span></p></div>
+          <div class="feuille-ligne" role="listitem"><span class="rh" aria-hidden="true">4</span><p class="cell theme" data-ref="A4"><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M7.8 12.4l3 3 5.4-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Les certifications qui font la différence</span></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bande bande-claire" aria-labelledby="t-etapes">
+      <div class="wrap etapes-zone">
+        <div class="tete-section">
+          <p class="surtitre">Comment ça se passe</p>
+          <h2 id="t-etapes">Trois étapes, deux minutes</h2>
+        </div>
+        <ol class="etapes">
+          <li><b>Réserve ta place.</b> Quatre champs à remplir, c'est gratuit.</li>
+          <li><b>Ajoute le webinaire à ton agenda.</b> Tu reçois deux rappels, la veille et une heure avant, avec le lien Teams. Rejoins aussi la chaîne WhatsApp.</li>
+          <li><b>Connecte-toi le jour J.</b> <span data-cfg="dateCourte">Mercredi 25 novembre</span>, de <span data-cfg="heures">16h à 18h</span>, sur Teams.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="bande signup" id="inscription" data-onglet="inscription" aria-labelledby="titre-form">
+      <div class="wrap signup-grille">
+        <div class="signup-texte">
+          <p class="surtitre">Inscription gratuite</p>
+          <h2 id="titre-form">Réserve ta place</h2>
+          <p class="signup-sous">Moins de deux minutes. Ton prénom, ton nom, ton e-mail et ton numéro WhatsApp.</p>
+        </div>
+
+        <div class="carte" id="carte">
+          <p class="carte-titre"><span class="carre" aria-hidden="true"></span>Inscription.xlsx</p>
+
+          <div id="bloc-form">
+            <div class="progression" aria-hidden="true"><i id="barre-progres"></i></div>
+            <p class="etape-label" id="etape-label" aria-live="polite">Étape 1 sur 3</p>
+
+            <form id="form" novalidate autocomplete="on">
+
+              <div class="etape" data-etape="1">
+                <h3>Qui es-tu ?</h3>
+                <div class="champ">
+                  <label for="prenom">Prénom</label>
+                  <div class="cell saisie" data-ref="B2"><input id="prenom" name="prenom" type="text" autocomplete="given-name" autocapitalize="words" maxlength="60" required aria-describedby="err-prenom"></div>
+                  <p class="erreur" id="err-prenom" role="alert"></p>
+                </div>
+                <div class="champ">
+                  <label for="nom">Nom</label>
+                  <div class="cell saisie" data-ref="B3"><input id="nom" name="nom" type="text" autocomplete="family-name" autocapitalize="words" maxlength="60" required aria-describedby="err-nom"></div>
+                  <p class="erreur" id="err-nom" role="alert"></p>
+                </div>
+              </div>
+
+              <div class="etape" data-etape="2" hidden>
+                <h3>Comment te joindre ?</h3>
+                <div class="champ">
+                  <label for="email">E-mail</label>
+                  <div class="cell saisie" data-ref="B4"><input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="120" required aria-describedby="err-email"></div>
+                  <p class="erreur" id="err-email" role="alert"></p>
+                </div>
+                <div class="champ">
+                  <label for="telephone">Téléphone WhatsApp</label>
+                  <div class="cell saisie tel" data-ref="B5">
+                    <select id="indicatif" name="indicatif" aria-label="Indicatif du pays"></select>
+                    <input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" required aria-describedby="err-telephone">
+                  </div>
+                  <div class="autre-indicatif" id="bloc-autre" hidden>
+                    <label for="autre-code">Indicatif du pays, par exemple +44</label>
+                    <div class="cell saisie" data-ref="C5"><input id="autre-code" name="autre-code" type="text" inputmode="tel" maxlength="6" placeholder="+"></div>
+                  </div>
+                  <p class="erreur" id="err-telephone" role="alert"></p>
+                </div>
+              </div>
+
+              <div class="etape" data-etape="3" hidden>
+                <h3>Une dernière chose</h3>
+                <div class="champ">
+                  <label for="profession">Profession ou domaine <span class="facultatif">(facultatif)</span></label>
+                  <div class="cell saisie" data-ref="B6"><input id="profession" name="profession" type="text" autocomplete="organization-title" maxlength="100" aria-describedby="err-profession"></div>
+                  <p class="erreur" id="err-profession" role="alert"></p>
+                </div>
+                <div id="turnstile" class="turnstile"></div>
+              </div>
+
+              <div class="piege" aria-hidden="true">
+                <label for="site">Ne remplis pas ce champ</label>
+                <input id="site" name="site" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <p class="erreur erreur-globale" id="err-globale" role="alert"></p>
+
+              <div class="nav">
+                <button class="retour" type="button" id="retour" hidden>Retour</button>
+                <button class="bouton" type="submit" id="envoyer">Continuer</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="confirmation" class="confirmation" hidden tabindex="-1" aria-live="polite">
+            <h3 id="titre-confirmation">Ta place est réservée</h3>
+            <p class="doublon" id="doublon" hidden>Cette adresse e-mail était déjà inscrite, ta place est bien confirmée.</p>
+            <div class="conf-infos">
+              <p class="conf-date" data-cfg="dateLongue">Mercredi 25 novembre 2026</p>
+              <p class="conf-ligne"><span data-cfg="heures">16h à 18h</span><span class="conf-sur">Sur <img src="assets/teams.png" alt="Microsoft Teams" width="130" height="109"></span></p>
+            </div>
+            <a class="bouton bouton-wa" data-href="whatsappUrl" href="#" target="_blank" rel="noopener">
+              <svg class="ico-wa" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24Zm-3.2 4.2c-.17 0-.45.06-.69.32-.23.26-.9.88-.9 2.15s.92 2.5 1.05 2.67c.13.17 1.8 2.88 4.44 3.92 2.2.87 2.64.7 3.12.66.48-.04 1.54-.63 1.76-1.24.22-.6.22-1.13.15-1.24-.06-.1-.23-.17-.49-.3-.26-.13-1.54-.76-1.78-.85-.24-.09-.4-.13-.58.13-.17.26-.67.85-.82 1.02-.15.17-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.29-.77-.69-1.3-1.54-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.58-1.4-.8-1.91-.2-.5-.42-.43-.58-.44h-.5Z"/></svg>
+              <span>Rejoindre la chaîne WhatsApp</span>
+            </a>
+            <p class="agenda"><a id="lien-agenda" href="#" download="webinaire-excel-avance.ics">Ajouter à mon agenda</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bande" id="faq" data-onglet="faq" aria-labelledby="t-faq">
+      <div class="wrap faq">
+        <div class="tete-section">
+          <p class="surtitre">Questions fréquentes</p>
+          <h2 id="t-faq">Avant de t'inscrire</h2>
+        </div>
+        <div class="faq-liste">
+          <details>
+            <summary>Est-ce vraiment gratuit ?</summary>
+            <p>Oui. L'inscription et le webinaire sont gratuits.</p>
+          </details>
+          <details>
+            <summary>Où et quand se déroule le webinaire ?</summary>
+            <p>En ligne, sur Microsoft Teams, le <span data-cfg="dateMin">mercredi 25 novembre 2026</span>, de <span data-cfg="heures">16h à 18h</span> (heure <span data-cfg="fuseau">GMT</span>). Le tableau des heures plus haut te donne l'heure chez toi.</p>
+          </details>
+          <details>
+            <summary>Comment je reçois le lien Teams ?</summary>
+            <p>Après ton inscription, ajoute le webinaire à ton agenda : le fichier contient le lien Teams et deux rappels, la veille et une heure avant.</p>
+          </details>
+          <details>
+            <summary>Je m'inscris deux fois, qu'est-ce qui se passe ?</summary>
+            <p>Rien de grave. Une même adresse e-mail n'est enregistrée qu'une fois, et ta place reste confirmée.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pied">
+    <div class="wrap pied-in">
       <img class="logo-pied" src="assets/logo-2as.webp" alt="2AS, Apidon Academy of Science" width="720" height="371">
       <ul class="contacts">
         <li>
@@ -168,9 +274,17 @@
           <a data-href="linkedinUrl" href="#" target="_blank" rel="noopener">Apidon Academy of Science</a>
         </li>
       </ul>
-    </footer>
+    </div>
+  </footer>
 
-  </div>
+  <!-- Onglets de feuille en bas, comme dans Excel -->
+  <nav class="onglets" aria-label="Sections de la page">
+    <a class="onglet actif" href="#accueil" data-cible="accueil">Accueil</a>
+    <a class="onglet" href="#programme" data-cible="programme">Programme</a>
+    <a class="onglet" href="#inscription" data-cible="inscription">Inscription</a>
+    <a class="onglet" href="#faq" data-cible="faq">Questions</a>
+    <span class="statut" aria-hidden="true">Prêt</span>
+  </nav>
 
   <script src="config.js"></script>
   <script src="app.js"></script>
