@@ -141,7 +141,36 @@
     colonnes.forEach(function (b, i) { b.style.setProperty("--h", Math.round((vals[i] / max) * 100) + "%"); });
   }
   entrees.forEach(function (e) { e.addEventListener("input", majFeuille); });
-  majFeuille();
+  var calme = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // les barres montent à l'ouverture, puis un chiffre se met à jour tout seul une fois
+  // (sauf si la personne a déjà touché à la page)
+  var interagi = false;
+  ["pointerdown", "keydown", "focusin", "touchstart"].forEach(function (nom) {
+    document.addEventListener(nom, function () { interagi = true; }, { once: true, passive: true });
+  });
+  function demonstration() {
+    if (interagi) { return; }
+    var champ = entrees[entrees.length - 1];
+    var cible = 48, courant = parseFloat(champ.value) || 0;
+    selectionner(champ.closest("[data-ref]"));
+    (function pas() {
+      if (interagi) { return; }
+      courant += 3;
+      if (courant > cible) { courant = cible; }
+      champ.value = String(courant);
+      majFeuille();
+      $("formule").textContent = String(courant);
+      if (courant < cible) { setTimeout(pas, 90); }
+    })();
+  }
+  if (calme) {
+    majFeuille();
+  } else {
+    colonnes.forEach(function (b) { b.style.setProperty("--h", "0%"); });
+    setTimeout(majFeuille, 350);
+    setTimeout(demonstration, 2600);
+  }
 
   /* ---------- Compte à rebours ---------- */
   function tic() {
@@ -317,12 +346,23 @@
     );
     return lignes.map(plier).join("\r\n") + "\r\n";
   }
+  function lienGoogleAgenda() {
+    var titre = (C.titre + " " + C.titreAccent).trim() + " (webinaire gratuit 2AS)";
+    var detail = "Webinaire gratuit de 2AS (Apidon Academy of Science).\n\nLien Teams : " + (C.teamsUrl || "") +
+      "\nChaîne WhatsApp : " + (C.whatsappUrl || "");
+    return "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+      "&text=" + encodeURIComponent(titre) +
+      "&dates=" + utcCompact(debutDate()) + "/" + utcCompact(finDate()) +
+      "&details=" + encodeURIComponent(detail) +
+      "&location=" + encodeURIComponent(C.teamsUrl || "Microsoft Teams");
+  }
   function preparerAgenda() {
+    $("lien-google").href = lienGoogleAgenda();
     var lien = $("lien-agenda");
     try {
       var blob = new Blob([fabriquerIcs()], { type: "text/calendar;charset=utf-8" });
       lien.href = URL.createObjectURL(blob);
-    } catch (e) { lien.parentNode.hidden = true; }
+    } catch (e) { lien.hidden = true; }
   }
 
   /* ---------- Validation côté navigateur (la même règle côté serveur) ---------- */
