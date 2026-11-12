@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Excel avancé | Webinaire gratuit 2AS</title>
+  <meta name="description" content="Arrête de perdre ton temps sur Excel. Webinaire gratuit de 2AS (Apidon Academy of Science), sur Teams. Réserve ta place.">
+  <meta name="theme-color" content="#217346">
+  <link rel="canonical" href="https://webinaire.apidonroyalcollege.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="2AS, Apidon Academy of Science">
+  <meta property="og:title" content="Excel avancé : arrête de perdre ton temps sur Excel">
+  <meta property="og:description" content="Webinaire gratuit de 2AS, sur Teams. Réserve ta place.">
+  <meta property="og:url" content="https://webinaire.apidonroyalcollege.com/">
+  <meta property="og:image" content="https://webinaire.apidonroyalcollege.com/assets/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Affiche du webinaire Excel avancé de 2AS : mercredi 25 novembre 2026, de 16h à 18h, sur Teams, gratuit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Excel avancé : arrête de perdre ton temps sur Excel">
+  <meta name="twitter:description" content="Webinaire gratuit de 2AS, sur Teams. Réserve ta place.">
+  <meta name="twitter:image" content="https://webinaire.apidonroyalcollege.com/assets/og-image.jpg">
+
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/inter-800.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="ruban" aria-hidden="true">
+    <div class="ruban-vert"></div>
+    <div class="barre-formule">
+      <span class="boite-nom">A1</span>
+      <span class="fx">fx</span>
+      <span class="champ-formule"></span>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <header class="entete">
+      <img class="logo" src="assets/logo-2as.webp" alt="2AS, Apidon Academy of Science" width="720" height="371">
+    </header>
+
+    <main class="grille">
+
+      <section class="zone-hero">
+        <h1 class="titre"><span class="mot" data-cfg="titre">Excel</span> <span class="mot accent" data-cfg="titreAccent">avancé</span></h1>
+        <p class="accroche">Arrête de perdre ton temps sur Excel</p>
+
+        <div class="infos">
+          <p class="date" data-cfg="dateLongue">Mercredi 25 novembre 2026</p>
+          <ul class="pastilles">
+            <li class="pastille heure" data-cfg="heures">16h à 18h</li>
+            <li class="pastille teams"><span>Sur</span> <img src="assets/teams.png" alt="Microsoft Teams" width="130" height="109"></li>
+            <li class="pastille gratuit">Gratuit</li>
+          </ul>
+        </div>
+
+        <a class="bouton" href="#inscription">Réserve maintenant ta place</a>
+      </section>
+
+      <section class="zone-themes" aria-label="Au programme">
+        <ul class="puces">
+          <li>Des formules qui travaillent à ta place</li>
+          <li>Des tableaux de bord qui impressionnent</li>
+          <li>Des chiffres qui parlent</li>
+          <li>Les certifications qui font la différence</li>
+        </ul>
+      </section>
+
+      <div class="zone-objet">
+        <img class="objet" src="assets/objet-3d.webp" alt="Tableur en 3D avec un graphique en barres" width="757" height="971">
+      </div>
+
+      <section class="zone-form" id="inscription" aria-labelledby="titre-form">
+        <div id="bloc-form">
+          <h2 id="titre-form">Inscris-toi</h2>
+
+          <form id="form" novalidate autocomplete="on">
+            <div class="champ">
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" type="text" autocomplete="given-name" autocapitalize="words" maxlength="60" required aria-describedby="err-prenom">
+              <p class="erreur" id="err-prenom" role="alert"></p>
+            </div>
+
+            <div class="champ">
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" type="text" autocomplete="family-name" autocapitalize="words" maxlength="60" required aria-describedby="err-nom">
+              <p class="erreur" id="err-nom" role="alert"></p>
+            </div>
+
+            <div class="champ">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="120" required aria-describedby="err-email">
+              <p class="erreur" id="err-email" role="alert"></p>
+            </div>
+
+            <div class="champ">
+              <label for="telephone">Téléphone WhatsApp</label>
+              <div class="tel">
+                <select id="indicatif" name="indicatif" aria-label="Indicatif du pays"></select>
+                <input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" required aria-describedby="err-telephone">
+              </div>
+              <div class="autre-indicatif" id="bloc-autre" hidden>
+                <label for="autre-code">Indicatif du pays, par exemple +44</label>
+                <input id="autre-code" name="autre-code" type="text" inputmode="tel" maxlength="6" placeholder="+">
+              </div>
+              <p class="erreur" id="err-telephone" role="alert"></p>
+            </div>
+
+            <div class="champ">
+              <label for="profession">Profession ou domaine <span class="facultatif">(facultatif)</span></label>
+              <input id="profession" name="profession" type="text" autocomplete="organization-title" maxlength="100" aria-describedby="err-profession">
+              <p class="erreur" id="err-profession" role="alert"></p>
+            </div>
+
+            <div class="piege" aria-hidden="true">
+              <label for="site">Ne remplis pas ce champ</label>
+              <input id="site" name="site" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div id="turnstile" class="turnstile"></div>
+
+            <p class="erreur erreur-globale" id="err-globale" role="alert"></p>
+
+            <button class="bouton" type="submit" id="envoyer">Réserve maintenant ta place</button>
+          </form>
+        </div>
+
+        <div id="confirmation" class="confirmation" hidden tabindex="-1" aria-live="polite">
+          <h2 id="titre-confirmation">Ta place est réservée</h2>
+          <p class="doublon" id="doublon" hidden>Cette adresse e-mail était déjà inscrite, ta place est bien confirmée.</p>
+          <div class="infos infos-confirmation">
+            <p class="date" data-cfg="dateLongue">Mercredi 25 novembre 2026</p>
+            <ul class="pastilles">
+              <li class="pastille heure" data-cfg="heures">16h à 18h</li>
+              <li class="pastille teams"><span>Sur</span> <img src="assets/teams.png" alt="Microsoft Teams" width="130" height="109"></li>
+            </ul>
+          </div>
+          <a class="bouton bouton-wa" data-href="whatsappUrl" href="#" target="_blank" rel="noopener">
+            <svg class="ico-wa" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24Zm-3.2 4.2c-.17 0-.45.06-.69.32-.23.26-.9.88-.9 2.15s.92 2.5 1.05 2.67c.13.17 1.8 2.88 4.44 3.92 2.2.87 2.64.7 3.12.66.48-.04 1.54-.63 1.76-1.24.22-.6.22-1.13.15-1.24-.06-.1-.23-.17-.49-.3-.26-.13-1.54-.76-1.78-.85-.24-.09-.4-.13-.58.13-.17.26-.67.85-.82 1.02-.15.17-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.29-.77-.69-1.3-1.54-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.58-1.4-.8-1.91-.2-.5-.42-.43-.58-.44h-.5Z"/></svg>
+            <span>Rejoindre la chaîne WhatsApp</span>
+          </a>
+          <p class="agenda"><a id="lien-agenda" href="#" download="webinaire-excel-avance.ics">Ajouter à mon agenda</a></p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="pied">
+      <img class="logo-pied" src="assets/logo-2as.webp" alt="2AS, Apidon Academy of Science" width="720" height="371">
+      <ul class="contacts">
+        <li>
+          <svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
+          <a data-href="telHref" data-cfg="telephone" href="tel:+22645013434">+226 45 01 34 34</a>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18" stroke="currentColor" stroke-width="1.8"/></svg>
+          <a data-href="siteHref" data-cfg="adresseSite" href="https://webinaire.apidonroyalcollege.com">webinaire.apidonroyalcollege.com</a>
+        </li>
+        <li class="reseau" data-cache-si-vide="linkedinUrl" hidden>
+          <svg class="ico ico-linkedin" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><rect width="24" height="24" rx="4" fill="#0A66C2"/><rect x="4.5" y="9.5" width="3" height="10" fill="#fff"/><circle cx="6" cy="6" r="1.8" fill="#fff"/><path d="M10 9.5h2.9v1.4c.5-.9 1.6-1.6 3.1-1.6 2.7 0 3.5 1.7 3.5 4.1v6.1h-3v-5.4c0-1.2-.3-2.1-1.5-2.1-1.3 0-2 .9-2 2.2v5.3H10z" fill="#fff"/></svg>
+          <a data-href="linkedinUrl" href="#" target="_blank" rel="noopener">Apidon Academy of Science</a>
+        </li>
+      </ul>
+    </footer>
+
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
